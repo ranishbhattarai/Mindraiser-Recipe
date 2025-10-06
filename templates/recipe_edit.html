@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Edit Recipe{% endblock title %}
+{% block body %}
+<div class="task p-5 mb-3 bg-light rounded">
+<h1 class="page-header text-center text-primary text-uppercase">Edit Recipe</h1>
+<form action="{% url 'edit_recipe' recipe.id %}" method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="name" class="form-label">Recipe Name</label>
+        <input type="text" class="form-control" id="name" name="name" value="{{ recipe.name }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="ingredients" class="form-label">Ingredients</label>
+        <textarea class="form-control" id="ingredients" name="ingredients" rows="4" required>{{ recipe.ingredients }}</textarea>
+    </div>
+    <div class="mb-3">
+        <label for="instructions" class="form-label">Instructions</label>
+        <textarea class="form-control" id="instructions" name="instructions" rows="4" required>{{ recipe.instructions }}</textarea>
+    </div>
+    <div class="mb-3">
+        <label for="prep_time" class="form-label">Preparation Time (minutes)</label>
+        <input type="number" class="form-control" id="prep_time" name="prep_time" value="{{ recipe.prep_time }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Update Recipe</button>
+</form>
+</div>
+{% endblock body %}
