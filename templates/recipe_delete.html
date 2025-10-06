@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 {% block title %}Delete Recipe{% endblock title %}
 {% block body %}
-<h1 class="page-header text-center text-danger p-5">Delete Recipe</h1>
-<div class="task p-5 mb-3 bg-light rounded text-center">
-    <h2>Are you sure you want to delete "{{ recipe.name }}"?</h2>
-    <form method="POST">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Confirm Delete</button>
-        <a href="{% url 'recipe_list' %}" class="btn btn-secondary">Cancel</a>
-    </form>
+<div class="container mx-auto px-4 py-8 max-w-2xl">
+    <h1 class="text-3xl font-bold text-center text-red-600 uppercase mb-8">Delete Recipe</h1>
+    <div class="bg-gray-100 shadow-md rounded-lg p-8 text-center">
+        <h2 class="text-xl font-semibold text-gray-800 mb-6">Are you sure you want to delete "{{ recipe.name }}"?</h2>
+        <form method="POST" class="space-x-4">
+            {% csrf_token %}
+            <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-lg transition">Confirm Delete</button>
+            <a href="{% url 'recipe_list' %}" class="bg-gray-600 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-lg inline-block transition">Cancel</a>
+        </form>
+    </div>
 </div>
 {% endblock body %}

@@ -1,27 +1,29 @@
 {% extends 'base.html' %}
 {% block title %}Recipe Create{% endblock title %}
 {% block body %}
-<div class="container">
-    <h1 class="page-header text-center p-3 text-uppercase text-primary">Create Recipe</h1>
-    <form action="{% url 'recipe_create' %}" method="POST">
-        {% csrf_token %}
-        <div class="mb-3">
-            <label for="name" class="form-label">Recipe Name</label>
-            <input type="text" class="form-control" id="name" name="name" required>
+<div class="container mx-auto px-4 py-8 max-w-2xl">
+    <h1 class="text-3xl font-bold text-center text-blue-600 uppercase mb-8">Create Recipe</h1>
+    <div class="bg-white shadow-md rounded-lg p-8">
+        <form action="{% url 'recipe_create' %}" method="POST">
+            {% csrf_token %}
+            <div class="mb-6">
+                <label for="name" class="block text-gray-700 font-semibold mb-2">Recipe Name</label>
+                <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="name" name="name" required>
+            </div>
+            <div class="mb-6">
+                <label for="ingredients" class="block text-gray-700 font-semibold mb-2">Ingredients</label>
+                <textarea class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="ingredients" name="ingredients" rows="4" required></textarea>
+            </div>
+            <div class="mb-6">
+                <label for="instructions" class="block text-gray-700 font-semibold mb-2">Instructions</label>
+                <textarea class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="instructions" name="instructions" rows="4" required></textarea>
+            </div>
+            <div class="mb-6">
+                <label for="prep_time" class="block text-gray-700 font-semibold mb-2">Preparation Time (minutes)</label>
+                <input type="number" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="prep_time" name="prep_time" required>
+            </div>
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition">Create Recipe</button>
+        </form>
     </div>
-    <div class="mb-3">
-        <label for="ingredients" class="form-label">Ingredients</label>
-        <textarea class="form-control" id="ingredients" name="ingredients" rows="4" required></textarea>
-    </div>
-    <div class="mb-3">
-        <label for="instructions" class="form-label">Instructions</label>
-        <textarea class="form-control" id="instructions" name="instructions" rows="4" required></textarea>
-    </div>
-    <div class="mb-3">
-        <label for="prep_time" class="form-label">Preparation Time (minutes)</label>
-        <input type="number" class="form-control" id="prep_time" name="prep_time" required>
-    </div>
-    <button type="submit" class="btn btn-primary">Create Recipe</button>
-</form>
 </div>
 {% endblock body %}
